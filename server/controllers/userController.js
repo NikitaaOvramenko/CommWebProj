@@ -1,3 +1,6 @@
+const ApiError = require('../error/ApiError')
+const apiErr = require('../error/ApiError')
+
 class UserController {
     
     async registration(req,res){
@@ -8,8 +11,12 @@ class UserController {
 
     }
 
-    async auth(req,res){
-        res.json({message:"WORKING - AUTH - WORKING"});
+    async auth(req,res,next){
+        const {id} = req.query
+        if(!id){
+            return next(ApiError.badRequest("no message !"));
+        }
+        res.json(id)
     }
 }
 

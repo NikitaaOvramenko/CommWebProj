@@ -1,14 +1,12 @@
 class BrandController {
     
-    async registration(req,res){
+    async create(req,res){
 
     }
 
-    async login(req,res){
+    async getAll(req,res){
 
-    }
-
-    async auth(req,res){
-        
     }
 }
+
+module.export = new BrandController()
