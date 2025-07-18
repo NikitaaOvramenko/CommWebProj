@@ -1,5 +1,4 @@
 const ApiError = require('../error/ApiError')
-const apiErr = require('../error/ApiError')
 
 class UserController {
     

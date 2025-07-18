@@ -22,7 +22,7 @@ app.use(errorHandler)
 const start = async() => {
     try {
         await sequelize.authenticate()
-        await sequelize.sync() // add parameter {force:true} if you need to recreate database
+        await sequelize.sync(); // add parameter {force:true} if you need to recreate database
         app.listen(PORT,() => console.log(`Server Started On Port ${PORT}`));
     
     } catch (e) {
