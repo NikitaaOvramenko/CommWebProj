@@ -30,7 +30,7 @@ class UserController {
 
     async login(req,res){
         const {email,password} = req.body
-        const user = await User.findOne({email});
+        const user = await User.findOne({where:{email:email}});
         if(!user || !(await bcrypt.compare(password,user.password))){
             return res.status(401).json({message: 'Invalid credentials'})
 
