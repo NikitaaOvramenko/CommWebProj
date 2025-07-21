@@ -5,7 +5,7 @@ const User = sequelize.define('user', {
     id: {type:DataTypes.INTEGER,primaryKey: true,autoIncrement: true}, // its a primary key in a database and must increment
     email:{type:DataTypes.STRING,unique:true}, // must be unique email
     password:{type:DataTypes.STRING}, //password might repeat tho
-    role: {type:DataTypes.STRING, defaultValue:"USER"} // role can be admin or user
+    role: {type:DataTypes.ENUM('admin','editor','user'), defaultValue:"user"} // role can be admin or user
     
 })
 

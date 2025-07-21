@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs')
 const apiError = require('../error/ApiError')
 
-const {Drug} = require('../models/models')
+const {Drug} = require('../models/models');
 
 class DrugController {
     
@@ -49,24 +49,31 @@ class DrugController {
 
     async getAll(req,res){
 
-      const {typeId,brandId} = req.query
 
+
+      let {typeId,brandId,limit,page} = req.query
+
+      page = page || 1
+      limit = limit || 9
+
+
+      let offset = page * limit - limit
       let devices;
 
       if (typeId && brandId){
-        devices = await Drug.findAll({where: {typeId:typeId,brandId:brandId}})
+        devices = await Drug.findAll({where: {typeId:typeId,brandId:brandId},limit:limit,offset:offset})
       }
 
       else if (!typeId && brandId){
-        devices = await Drug.findAll({where: {brandId:brandId}})
+        devices = await Drug.findAll({where: {brandId:brandId},limit:limit,offset:offset})
       }
 
       else if (typeId && !brandId){
-        devices = await Drug.findAll({where: {typeId:typeId}})
+        devices = await Drug.findAll({where: {typeId:typeId},limit:limit,offset:offset})
       }
 
       else if (!typeId && !brandId){
-        devices = await Drug.findAll({where:{}})
+        devices = await Drug.findAll({where:{},limit:limit,offset:offset})
       }
 
       return res.json(devices);
