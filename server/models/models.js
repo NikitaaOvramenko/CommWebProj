@@ -25,6 +25,7 @@ const Drug = sequelize.define('drug',{
     name:{type:DataTypes.STRING,unique:true,allowNull:false},
     price:{type:DataTypes.DECIMAL,allowNull:false},
     stock:{type:DataTypes.INTEGER,allowNull:false},
+    rating:{type:DataTypes.INTEGER,defaultValue:0},
     img:{type:DataTypes.STRING},
 })
 

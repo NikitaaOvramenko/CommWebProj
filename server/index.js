@@ -7,15 +7,25 @@ const models = require('./models/models'); //Database models
 const cors = require('cors'); //communication with backend using frontend
 const router = require('./routes/index');//importing main router
 const errorHandler = require('./middleware/ErrorHandilngMiddleware');//error handling middleware
+const fileUpload = require('express-fileupload')
+const path = require('path')
+
 
 
 const app = express(); //app
+
+
+
+
 //Mount cors
 app.use(cors());
 //Mount json
 app.use(express.json());
+//Mount File upload
+app.use(fileUpload())
 //Mount main router
 app.use('/api',router);
+
 app.use(errorHandler)
 
 
